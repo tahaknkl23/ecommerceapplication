@@ -1,4 +1,4 @@
-import 'package:e_commerce_application/riverpod_managament.dart';
+import 'package:e_commerce_application/riverpod/riverpod_managament.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
