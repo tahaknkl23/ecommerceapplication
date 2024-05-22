@@ -1,5 +1,5 @@
 import 'package:e_commerce_application/components/bottom_nav_bar.dart';
-import 'package:e_commerce_application/components/riverpod/bottom_nav_bar_riverpod.dart';
+import 'package:e_commerce_application/riverpod/bottom_nav_bar_riverpod.dart';
 import 'package:e_commerce_application/riverpod/riverpod_managament.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

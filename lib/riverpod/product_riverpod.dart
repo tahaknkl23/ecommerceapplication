@@ -4,6 +4,10 @@ import '../model/product_model.dart';
 
 class ProductRiverpod extends ChangeNotifier {
   List<ProductModel> products = [];
+  List<ProductModel> favorites = [];
+  List<ProductModel> basketProducts = [];
+  double totalPrice = 0.0;
+
   final List<String> imagePaths = [
     "assets/images/one.png",
     "assets/images/two.png",
@@ -15,8 +19,24 @@ class ProductRiverpod extends ChangeNotifier {
   ];
 
   void setFavorite(ProductModel model) {
-    model.isFavorite = !model.isFavorite;
-    notifyListeners();
+    if (model.isFavorite) {
+      model.isFavorite = false;
+      favorites.remove(model);
+      notifyListeners();
+    } else {
+      model.isFavorite = true;
+      favorites.add(model);
+      notifyListeners();
+    }
+  }
+
+  void addedBasket(ProductModel model) {
+    basketProducts.add(model);
+    setTotalPrice(model);
+  }
+
+  void setTotalPrice(ProductModel model) {
+    totalPrice += model.price;
   }
 
   void init() {
