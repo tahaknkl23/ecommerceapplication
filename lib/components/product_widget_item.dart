@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:e_commerce_application/model/product_model.dart';
 
 class ProductWidget extends StatelessWidget {
-  ProductModel model;
-  Function setFavorite;
-  Function setBasket;
-  ProductWidget({
+  final ProductModel model;
+  final Function setFavorite;
+  final Function setBasket;
+  const ProductWidget({
     super.key,
     required this.model,
     required this.setFavorite,

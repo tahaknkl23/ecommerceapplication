@@ -11,7 +11,7 @@ class Basket extends ConsumerWidget {
     var product = ref.watch(productRiverpod);
 
     return Scaffold(
-      body: product.favorites.isEmpty
+      body: product.basketProducts.isEmpty
           ? Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -41,17 +41,35 @@ class Basket extends ConsumerWidget {
                     ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
-                      itemCount: product.favorites.length,
+                      itemCount: product.basketProducts.length,
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: ProductWidget(
-                            model: product.favorites[index],
-                            setFavorite: () => product.setFavorite(product.favorites[index]),
-                            setBasket: () {},
+                            model: product.basketProducts[index],
+                            setFavorite: () => product.setFavorite(product.basketProducts[index]),
+                            setBasket: () => product.addedBasket(product.basketProducts[index]),
                           ),
                         );
                       },
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Total Price: ${product.totalPrice.toString()} ₺",
+                          style: const TextStyle(fontSize: 20, color: Colors.red),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            ref.watch(bottomNavBarRiverpod).setCurrentIndex(2);
+                          },
+                          child: const Text("Complete Order"),
+                        )
+                      ],
                     ),
                   ],
                 ),

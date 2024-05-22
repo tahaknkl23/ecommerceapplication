@@ -33,6 +33,10 @@ class ProductRiverpod extends ChangeNotifier {
   void addedBasket(ProductModel model) {
     basketProducts.add(model);
     setTotalPrice(model);
+    SnackBar(
+      content: Text("${model.title} added to basket"),
+      duration: const Duration(seconds: 1),
+    );
   }
 
   void setTotalPrice(ProductModel model) {
